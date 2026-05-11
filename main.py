@@ -40,7 +40,9 @@ builder.add_edge("execute_tools", "revise")
 builder.add_conditional_edges("revise", event_loop, ["execute_tools", END])
 graph = builder.compile()
 
-print(graph.get_graph().draw_mermaid())
+# print(graph.get_graph().draw_mermaid())
+
+graph.get_graph().draw_mermaid_png(output_file_path="graph.png")
 
 
 res = graph.invoke(
