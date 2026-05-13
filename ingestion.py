@@ -4,11 +4,9 @@ from langchain_chroma import Chroma
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_ollama import OllamaEmbeddings
 
-# from langchain_community.embeddings import OllamaEmbeddings
-
 load_dotenv()
 
-embeddings = OllamaEmbeddings(model="qwen3-embedding:0.6b")
+embeddings = OllamaEmbeddings(model="bge-m3:latest")
 persist_directory = "./.chroma"
 collection_name = "rag-chroma"
 
@@ -27,12 +25,12 @@ text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
 )
 doc_splits = text_splitter.split_documents(docs_list)
 
-vectorstore = Chroma.from_documents(
-    documents=doc_splits,
-    collection_name=collection_name,
-    embedding=embeddings,
-    persist_directory=persist_directory,
-)
+# vectorstore = Chroma.from_documents(
+#     documents=doc_splits,
+#     collection_name=collection_name,
+#     embedding=embeddings,
+#     persist_directory=persist_directory,
+# )
 
 retriever = Chroma(
     collection_name=collection_name,

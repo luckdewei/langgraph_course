@@ -5,9 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "onnxruntime==1.26.0; sys_platform == 'darwin' and platform_machine == 'arm64'",  # Apple Silicon
-    "onnxruntime==1.20.1; sys_platform == 'darwin' and platform_machine == 'x86_64'",  # Intel Mac
-    "onnxruntime==1.26.0; sys_platform != 'darwin'",  # 其他平台
+    "onnxruntime==1.26.0; sys_platform == 'darwin' and platform_machine == 'arm64'", # Apple Silicon
+    "onnxruntime==1.20.1; sys_platform == 'darwin' and platform_machine == 'x86_64'", # Intel Mac
+    "onnxruntime==1.26.0; sys_platform != 'darwin'", # 其他平台
     "beautifulsoup4>=4.14.3",
     "langchain>=1.2.18",
     "langchain-chroma>=1.1.0",
@@ -21,4 +21,5 @@ dependencies = [
     "tavily-python>=0.7.24",
     "protobuf<4",
     "langchain-ollama>=1.1.0",
+    "langsmith>=0.8.3",
 ]

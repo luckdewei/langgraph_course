@@ -1,15 +1,16 @@
 from typing import List, TypedDict
 
 
+#  LangGraph 要求: StateGraph 需要状态是 TypedDict 或 dict
 class GraphState(TypedDict):
     """
-    Represents the state of our graph.
+    图的状态
 
     Attributes:
-        question: question
-        generation: LLM generation
-        web_search: whether to add search
-        documents: list of documents
+        question: 问题
+        generation: LLM 生成
+        web_search: 是否需要搜索
+        documents: 文档列表
     """
 
     question: str

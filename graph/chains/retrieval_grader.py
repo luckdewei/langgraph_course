@@ -6,22 +6,20 @@ llm = ChatDeepSeek(model="deepseek-chat", temperature=0)
 
 
 class GradeDocuments(BaseModel):
-    """Binary score for relevance check on retrieved documents."""
+    """检索文档相关性检查"""
 
-    binary_score: str = Field(
-        description="Documents are relevant to the question, 'yes' or 'no'"
-    )
+    binary_score: str = Field(description="文档是否与问题相关,'yes'或'no'")
 
 
 structured_llm_grader = llm.with_structured_output(GradeDocuments)
 
-system = """You are a grader assessing relevance of a retrieved document to a user question. \n 
-    If the document contains keyword(s) or semantic meaning related to the question, grade it as relevant. \n
-    Give a binary score 'yes' or 'no' score to indicate whether the document is relevant to the question."""
+system = """你是一评估助手,用于评估检索到的文档与用户问题的相关性。\n
+    如果文档包含与问题相关的关键词或语义意义,请将其评为相关。\n
+    请给出'yes'或'no',表示文档是否与问题相关。"""
 grade_prompt = ChatPromptTemplate.from_messages(
     [
         ("system", system),
-        ("human", "Retrieved document: \n\n {document} \n\n User question: {question}"),
+        ("human", "检索到的文档: \n\n {document} \n\n 用户问题: {question}"),
     ]
 )
 
